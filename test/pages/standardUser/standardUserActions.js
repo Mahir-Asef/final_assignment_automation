@@ -26,7 +26,6 @@ class StandardUserActions {
   //     await standardUserLocators.addItemButtons.click();
   //     await browser.pause(5000);
   // }
-
   //select product from list
   async clickOnItemsButton(count) {
     const addButtons = standardUserLocators.addItemButtons;
@@ -52,12 +51,65 @@ class StandardUserActions {
     await standardUserLocators.continue.click();
     await browser.pause(4000);
   }
+
+  //product matching
+
+  async productNameFromInventory(count) {
+    var productNamefromList = standardUserLocators.getProductNamefromInventory;
+    const itemNames = [];
+    for (let i = 0; i < count; i++) {
+      var productName = await productNamefromList[i].getText();
+      itemNames.push(productName);
+    }
+    return itemNames;
+  }
+  async productPriceFromInventory(count) {
+    var productPricefromList =
+      standardUserLocators.getProductPricefromInventory;
+    const itemPrices = [];
+    for (let i = 0; i < count; i++) {
+      var productPrice = await productPricefromList[i].getText();
+      const price = parseFloat(productPrice.replace("$", ""));
+      itemPrices.push(price);
+    }
+    return itemPrices;
+  }
+
+  async TotalPriceWithoutTax() {
+    await browser.pause(2000);
+    const itemTotalText =
+      await standardUserLocators.totalItemPriceWithoutTax.getText();
+    const itemTotalprice = await parseFloat(
+      itemTotalText.replace("Item total: $", "")
+    );
+    await browser.pause(2000);
+    return itemTotalprice;
+  }
+
+  async totalPriceWithTax() {
+    await browser.pause(2000);
+    const itemTotalTax =
+      await standardUserLocators.totalItemPriceWithTax.getText();
+    //console.log(`Tax1 ${itemTotalTax}`);
+    const itemTotalwithTax = await parseFloat(
+      itemTotalTax.replace("Total: $", "")
+    );
+    await browser.pause(2000);
+    //console.log(`Tax2 ${itemTotalwithTax}`);
+    return itemTotalwithTax;
+  }
+
+  //finshing purchase journey
   async clickOnFinishButton() {
     await standardUserLocators.finish.click();
     await browser.pause(4000);
   }
+
   async getSuccessfulMessage() {
     return await standardUserLocators.message.getText();
+  }
+  async getOrderDetailsMessage() {
+    return await standardUserLocators.messageDetails.getText();
   }
   async clickOnlogout() {
     await standardUserLocators.logout.click();

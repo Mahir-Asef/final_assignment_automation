@@ -1,6 +1,7 @@
 
 const spec='./test/specs/lockedOutUser.spec.js';
 const standardUser='./test/specs/standardUser.spec.js';
+const performenceGlitch='./test/specs/performenceGlitchUser.spec.js';
 exports.config = {
     //
     // ====================
@@ -27,8 +28,8 @@ exports.config = {
         // './test/specs/**/*.js',
         // './script.js',
         // spec,
-        standardUser,
-        // auth
+        // standardUser,
+        performenceGlitch,
     ],
     // suites: {
     //     purchase: [

@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio run ./wdio.conf.js"
+
   },
   "keywords": [],
   "author": "",
@@ -15,4 +16,5 @@
     "@wdio/mocha-framework": "^9.2.5",
     "@wdio/spec-reporter": "^9.2.2"
   }
+  
 }
