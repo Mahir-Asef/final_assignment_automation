@@ -3,11 +3,9 @@ const username = "performance_glitch_user";
 const password = "secret_sauce";
 let count = 1;
 let percentageOfTax = 0.08;
-let productIntoTheInventory = [
-    "Test.allTheThings() T-Shirt (Red)"
-];
+let productIntoTheInventory = ["Test.allTheThings() T-Shirt (Red)"];
 describe("Performance Glitch User Purchase Flow", () => {
-  it("hould complete login for performance_glitch_user", async () => {
+  it("should complete login for performance_glitch_user", async () => {
     await performenceGlitchUserActions.login(username, password);
   });
   it("should complete a purchase flow for performance_glitch_user", async () => {
@@ -19,22 +17,17 @@ describe("Performance Glitch User Purchase Flow", () => {
     await performenceGlitchUserActions.clickOnCloseMenue();
 
     await performenceGlitchUserActions.clickOnNameFilterField();
-    await browser.pause(3000);
     await performenceGlitchUserActions.selectNamefromFilterFiled();
-    await browser.pause(3000);
     await performenceGlitchUserActions.clickAddtoCartFromList(count);
-    await browser.pause(3000);
     await performenceGlitchUserActions.clickOnAddtoCartShopping();
-    await browser.pause(3000);
     await performenceGlitchUserActions.clickOnCheckoutbutton();
 
     await performenceGlitchUserActions.clickOnCheckoutInfo(
-      "xoxo",
-      "rock",
-      1212
+      "Xoxo",
+      "Mozo",
+      1216
     );
-    await browser.pause(3000);
-
+    await browser.pause(2000);
     await performenceGlitchUserActions.clickContinue();
 
     let name = await performenceGlitchUserActions.getProductNameFromInventory(
@@ -60,8 +53,6 @@ describe("Performance Glitch User Purchase Flow", () => {
     expect(expectedTotal).toBeCloseTo(totalPricewithTax);
 
     await performenceGlitchUserActions.clickOnFinish();
-    await browser.pause(3000);
-
     const initiaiSuccessfulMessage = "Thank you for your order!";
     const actualSuccessfulMessge =
       await performenceGlitchUserActions.getSuccessfulMessage();
@@ -74,8 +65,6 @@ describe("Performance Glitch User Purchase Flow", () => {
     expect(orderDetailsMessage).toEqual(actualDetailsMesage);
     await performenceGlitchUserActions.clickOnHamburgerMenue();
     await performenceGlitchUserActions.resetAppState();
-    await browser.pause(3000);
     await performenceGlitchUserActions.clickOnLogout();
-    await browser.pause(3000);
   });
 });

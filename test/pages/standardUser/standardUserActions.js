@@ -3,11 +3,11 @@ const standardUserLocators = require("./standardUserLocators");
 class StandardUserActions {
   async login(username, password) {
     await standardUserLocators.usernameField.setValue(username);
-    await browser.pause(3000);
+    await browser.pause(2000);
     await standardUserLocators.passwordField.setValue(password);
-    await browser.pause(3000);
+    await browser.pause(2000);
     await standardUserLocators.loginButton.click();
-    await browser.pause(3000);
+    await browser.pause(2000);
   }
 
   async clickOnHamburgerMenue() {
@@ -16,11 +16,11 @@ class StandardUserActions {
 
   async resetAppState() {
     await standardUserLocators.resetAppState.click();
-    await browser.pause(5000);
+    await browser.pause(2000);
   }
   async clickOnCloseMenue() {
     await standardUserLocators.closeMenue.click();
-    await browser.pause(3000);
+    await browser.pause(2000);
   }
   // async clickOnItemsButton(){
   //     await standardUserLocators.addItemButtons.click();
@@ -31,12 +31,12 @@ class StandardUserActions {
     const addButtons = standardUserLocators.addItemButtons;
     for (let i = 0; i < count; i++) {
       await addButtons[i].click();
-      await browser.pause(4000);
+      await browser.pause(2000);
     }
   }
   async clickOnShopingCart() {
     await standardUserLocators.shopingCart.click();
-    await browser.pause(4000);
+    await browser.pause(2000);
   }
   async clickOnCheckout() {
     await standardUserLocators.checkout.click();
@@ -45,11 +45,11 @@ class StandardUserActions {
     await standardUserLocators.firstName.setValue(firstName);
     await standardUserLocators.lastName.setValue(lastName);
     await standardUserLocators.postalCode.setValue(postalCode);
-    await browser.pause(4000);
+    await browser.pause(2000);
   }
   async clickOnContinue() {
     await standardUserLocators.continue.click();
-    await browser.pause(4000);
+    await browser.pause(2000);
   }
 
   //product matching
@@ -90,19 +90,17 @@ class StandardUserActions {
     await browser.pause(2000);
     const itemTotalTax =
       await standardUserLocators.totalItemPriceWithTax.getText();
-    //console.log(`Tax1 ${itemTotalTax}`);
     const itemTotalwithTax = await parseFloat(
       itemTotalTax.replace("Total: $", "")
     );
     await browser.pause(2000);
-    //console.log(`Tax2 ${itemTotalwithTax}`);
     return itemTotalwithTax;
   }
 
   //finshing purchase journey
   async clickOnFinishButton() {
     await standardUserLocators.finish.click();
-    await browser.pause(4000);
+    await browser.pause(2000);
   }
 
   async getSuccessfulMessage() {
@@ -113,7 +111,7 @@ class StandardUserActions {
   }
   async clickOnlogout() {
     await standardUserLocators.logout.click();
-    await browser.pause(4000);
+    await browser.pause(2000);
   }
 }
 

@@ -11,6 +11,7 @@ describe('Locked Out User Test', () => {
         // console.log(errorMsg)
         const actualMsg = 'Epic sadface: Sorry, this user has been locked out.';
         expect(errorMsg).toEqual(actualMsg);
+        await browser.refresh();
         //expect(errorMsg).toContain(actualMsg);
     });
 });

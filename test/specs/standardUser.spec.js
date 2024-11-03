@@ -38,7 +38,6 @@ describe("Standard User Test", () => {
     expect(name).toEqual(productIntoTheInventory);
 
     let price = await standardUserActions.productPriceFromInventory(count);
-    //   console.log(`Spec file price : ${typeof price}`);
     //    await browser.pause(2000);
 
     let calculatedTotal = 0;
