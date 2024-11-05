@@ -22,11 +22,6 @@ class StandardUserActions {
     await standardUserLocators.closeMenue.click();
     await browser.pause(2000);
   }
-  // async clickOnItemsButton(){
-  //     await standardUserLocators.addItemButtons.click();
-  //     await browser.pause(5000);
-  // }
-  //select product from list
   async clickOnItemsButton(count) {
     const addButtons = standardUserLocators.addItemButtons;
     for (let i = 0; i < count; i++) {

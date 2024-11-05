@@ -1,4 +1,4 @@
-const spec = "./test/specs/lockedOutUser.spec.js";
+const lockedOutUser = "./test/specs/lockedOutUser.spec.js";
 const standardUser = "./test/specs/standardUser.spec.js";
 const performenceGlitch = "./test/specs/performenceGlitchUser.spec.js";
 exports.config = {
@@ -26,14 +26,14 @@ exports.config = {
   specs: [
     // './test/specs/**/*.js',
     // './script.js',
-    // spec,
+    // lockedOutUser,
     standardUser,
     // performenceGlitch,
   ],
   suites: {
     runAllFiles: [
-      // [spec],
-      //  [spec,standardUser,performenceGlitch]
+      // [lockedOutUser],
+       [lockedOutUser,standardUser,performenceGlitch]
     ],
   },
   // Patterns to exclude.

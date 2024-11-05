@@ -12,7 +12,7 @@ class StandardUserLocators {
     }
 
     get hamburgerMenu() {
-        return $('//button[@id="react-burger-menu-btn"]');
+        return $("//div[@class='bm-burger-button']");
     }
 
     get resetAppState() {

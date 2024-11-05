@@ -10,29 +10,33 @@ let productIntoTheInventory = [
 ];
 
 describe("Standard User Test", () => {
-  it("should complete login for standard_user", async () => {
+  it("should complete login for standard_user's", async () => {
     // Login with standard_user
     await standardUserActions.login(username, password);
   });
-  it("standard_user's product purchase journey", async () => {
+  it("open and close hamburger menu for standard_user's", async () => {
     // hamburger Menue
     await standardUserActions.clickOnHamburgerMenue();
     // Reset App State
     await standardUserActions.resetAppState();
     //close menue
     await standardUserActions.clickOnCloseMenue();
+  });
+  it("add to cart products for standard_user's", async () => {
     //add to cart
-    // await standardUserActions.clickOnItemsButton();
     await standardUserActions.clickOnItemsButton(count);
     //calling shoping cart
     await standardUserActions.clickOnShopingCart();
+  });
+  it("checkout information and click on continue for standard_user's", async () => {
     //calling checkout
     await standardUserActions.clickOnCheckout();
     // calling checkout-Info
-    await standardUserActions.clickOnCheckoutInfo("xoxo", "rock", 1212);
+    await standardUserActions.clickOnCheckoutInfo("Mahir", "Ashef", 1216);
     // calling click on continue
     await standardUserActions.clickOnContinue();
-
+  });
+  it("verify total price without taxt and with tax for standard_user's", async () => {
     //product purchase journey
     let name = await standardUserActions.productNameFromInventory(count);
     expect(name).toEqual(productIntoTheInventory);
@@ -56,6 +60,9 @@ describe("Standard User Test", () => {
 
     //calling of finish button
     await standardUserActions.clickOnFinishButton();
+  });
+
+  it("successful message and logout for standard_user's", async () => {
     //geting successful  message
     const successfulMsg = await standardUserActions.getSuccessfulMessage();
     //console.log(successfulMsg)
@@ -67,7 +74,7 @@ describe("Standard User Test", () => {
     const actualDetailsMesage =
       "Your order has been dispatched, and will arrive just as fast as the pony can get there!";
     expect(orderDetailsMessage).toEqual(actualDetailsMesage);
-    
+
     // hamburger Menue
     await standardUserActions.clickOnHamburgerMenue();
     // Reset App State
