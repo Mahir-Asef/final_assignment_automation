@@ -26,9 +26,9 @@ exports.config = {
   specs: [
     // './test/specs/**/*.js',
     // './script.js',
-    // lockedOutUser,
+    lockedOutUser,
     standardUser,
-    // performenceGlitch,
+    performenceGlitch,
   ],
   suites: {
     runAllFiles: [
