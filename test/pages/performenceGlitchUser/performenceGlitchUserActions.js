@@ -1,5 +1,5 @@
 const performenceGlitchUserLocators = require("./performenceGlitchUserLocators");
-
+const utility = require("../utilites/utility")
 class PerformenceGlitchUserActions {
   async login(username, password) {
     await performenceGlitchUserLocators.usernameField.setValue(username);
@@ -84,9 +84,9 @@ class PerformenceGlitchUserActions {
     const itemPrices = [];
     for (let i = 0; i < count; i++) {
       var productPrice = await productPricefromList[i].getText();
-      const price = parseFloat(productPrice.replace("$", ""));
+      const price = await utility.priceInNumber(productPrice);
+      // const price = parseFloat(productPrice.replace("$", ""));
       itemPrices.push(price);
-      //   console.log(`Product Price: ${productPrice}`);
     }
     await browser.pause(2000);
     return itemPrices;
@@ -96,9 +96,10 @@ class PerformenceGlitchUserActions {
     await browser.pause(2000);
     const itemTotalText =
       await performenceGlitchUserLocators.totalItemPrice.getText();
-    const itemTotalprice = await parseFloat(
-      itemTotalText.replace("Item total: $", "")
-    );
+    const itemTotalprice = await utility.priceInNumberWithoutTax(itemTotalText);
+    // const itemTotalprice = await parseFloat(
+    //   itemTotalText.replace("Item total: $", "")
+    // );
     await browser.pause(2000);
     return itemTotalprice;
   }
@@ -106,9 +107,10 @@ class PerformenceGlitchUserActions {
     await browser.pause(2000);
     const itemTotalTax =
       await performenceGlitchUserLocators.totalItemPriceWithTax.getText();
-    const itemTotalwithTax = await parseFloat(
-      itemTotalTax.replace("Total: $", "")
-    );
+    const itemTotalwithTax = await utility.priceInNumberWithTax(itemTotalTax);
+    // const itemTotalwithTax = await parseFloat(
+    //   itemTotalTax.replace("Total: $", "")
+    // );
     await browser.pause(2000);
     return itemTotalwithTax;
   }

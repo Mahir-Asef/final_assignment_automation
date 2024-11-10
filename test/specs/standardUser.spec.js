@@ -48,12 +48,9 @@ describe("Standard User Test", () => {
     for (let i = 0; i < price.length; i++) {
       calculatedTotal += price[i];
     }
-    //console.log(calculatedTotal);
     const itemPrice = await standardUserActions.TotalPriceWithoutTax();
-    // console.log(`Item Price: ${typeof itemPrice}`);
     expect(calculatedTotal).toEqual(itemPrice);
 
-    //
     const expectedTotal = calculatedTotal + calculatedTotal * percentageOfTax;
     const totalPricewithTax = await standardUserActions.totalPriceWithTax();
     expect(expectedTotal).toBeCloseTo(totalPricewithTax);
@@ -65,10 +62,8 @@ describe("Standard User Test", () => {
   it("successful message and logout for standard_user's", async () => {
     //geting successful  message
     const successfulMsg = await standardUserActions.getSuccessfulMessage();
-    //console.log(successfulMsg)
     const actualMsg = "Thank you for your order!";
     expect(successfulMsg).toEqual(actualMsg);
-    //expect(successfulMsg).toContain(actualMsg);
     const orderDetailsMessage =
       await standardUserActions.getOrderDetailsMessage();
     const actualDetailsMesage =

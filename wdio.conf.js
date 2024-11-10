@@ -33,7 +33,9 @@ exports.config = {
   suites: {
     runAllFiles: [
       // [lockedOutUser],
-       [lockedOutUser,standardUser,performenceGlitch]
+      // [standardUser],
+      // [performenceGlitch],
+      [lockedOutUser,standardUser,performenceGlitch]
     ],
   },
   // Patterns to exclude.

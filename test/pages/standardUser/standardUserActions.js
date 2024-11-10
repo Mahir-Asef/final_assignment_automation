@@ -1,5 +1,5 @@
 const standardUserLocators = require("./standardUserLocators");
-
+const utility = require("../utilites/utility");
 class StandardUserActions {
   async login(username, password) {
     await standardUserLocators.usernameField.setValue(username);
@@ -64,7 +64,8 @@ class StandardUserActions {
     const itemPrices = [];
     for (let i = 0; i < count; i++) {
       var productPrice = await productPricefromList[i].getText();
-      const price = parseFloat(productPrice.replace("$", ""));
+      const price = await utility.priceInNumber(productPrice);
+      // const price = parseFloat(productPrice.replace("$", ""));
       itemPrices.push(price);
     }
     return itemPrices;
@@ -74,9 +75,10 @@ class StandardUserActions {
     await browser.pause(2000);
     const itemTotalText =
       await standardUserLocators.totalItemPriceWithoutTax.getText();
-    const itemTotalprice = await parseFloat(
-      itemTotalText.replace("Item total: $", "")
-    );
+    const itemTotalprice = await utility.priceInNumberWithoutTax(itemTotalText);
+    // const itemTotalprice = await parseFloat(
+    //   itemTotalText.replace("Item total: $", "")
+    // );
     await browser.pause(2000);
     return itemTotalprice;
   }
@@ -85,9 +87,10 @@ class StandardUserActions {
     await browser.pause(2000);
     const itemTotalTax =
       await standardUserLocators.totalItemPriceWithTax.getText();
-    const itemTotalwithTax = await parseFloat(
-      itemTotalTax.replace("Total: $", "")
-    );
+    const itemTotalwithTax = await utility.priceInNumberWithTax(itemTotalTax);
+    // const itemTotalwithTax = await parseFloat(
+    //   itemTotalTax.replace("Total: $", "")
+    // );
     await browser.pause(2000);
     return itemTotalwithTax;
   }

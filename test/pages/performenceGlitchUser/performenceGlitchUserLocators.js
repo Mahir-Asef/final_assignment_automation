@@ -18,12 +18,13 @@ class PerformenceGlitchUserLocators {
     get resetAppState() {
         return $('//a[@id="reset_sidebar_link"]');
     }
+
     get closeMenue(){
         return $("//button[@id='react-burger-cross-btn']");
     }
+    
     get nameFilterField() {
         return $("//select[@class='product_sort_container']");
-        //return $("//span[@class='select_container']");
     }
 
     get optionSelectionNameFromFilter() {
@@ -62,6 +63,7 @@ class PerformenceGlitchUserLocators {
     get productNamefromInventory() {
         return $$("//div[contains(@class, 'inventory_item_name')]");
     }
+    
     get productPricefromInventory() {
         return $$("//div[contains(@class, 'inventory_item_price')]");
     }
@@ -80,9 +82,11 @@ class PerformenceGlitchUserLocators {
     get successfulMessage() {
         return $("//h2[@class='complete-header']");
     }
+
     get messageDetails(){
         return $("//div[@class='complete-text']");
-    }    
+    }  
+
     get logout() {
         return $("//a[@id='logout_sidebar_link']");
     }

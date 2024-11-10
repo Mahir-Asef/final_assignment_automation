@@ -48,12 +48,10 @@ class StandardUserLocators {
         return $('//input[@id="continue"]');
     }
 
-
-    //div[@class='inventory_item_name']
-    //div[@class='inventory_item_price']
     get getProductNamefromInventory(){
         return $$("//div[contains(@class, 'inventory_item_name')]");
     }
+
     get getProductPricefromInventory(){
         return $$("//div[contains(@class, 'inventory_item_price')]");
     }
@@ -61,6 +59,7 @@ class StandardUserLocators {
     get totalItemPriceWithoutTax(){
         return $("//div[contains(@class,'summary_subtotal_label')]");
     }
+
     get totalItemPriceWithTax(){
         return $("//div[@class='summary_total_label']");
     }
@@ -68,12 +67,15 @@ class StandardUserLocators {
     get finish(){
         return $("//button[@id='finish']");
     }
+
     get message(){
         return $("//h2[@class='complete-header']");
     }
+
     get messageDetails(){
         return $("//div[@class='complete-text']");
     }
+
     get logout(){
         return $("//a[@id='logout_sidebar_link']");
     }
